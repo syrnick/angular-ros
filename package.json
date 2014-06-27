@@ -1,0 +1,19 @@
+{
+  "name": "angular-ros",
+  "version": "0.0.1-pre",
+  "repository": "syrnick/angular-ros",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-karma": "~0.3.0",
+    "karma": "^0.12.16",
+    "karma-chrome-launcher": "^0.1.4",
+    "karma-mocha": "^0.1.3",
+    "karma-mocha-debug": "^0.1.2",
+    "mocha": "*",
+    "chai": "*",
+    "chai-as-promised": "*",
+    "protractor": "~1.0.0-rc1",
+    "selenium-webdriver": "~2.42.1"
+  }
+}

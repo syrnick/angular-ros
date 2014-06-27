@@ -1,0 +1,23 @@
+{
+  "name": "angular-ros",
+  "description": "Angular ROS app proof-of-conecpt",
+  "version": "0.1.0",
+  "homepage": "https://github.com/syrnick/angular-ros",
+  "license": "BSD",
+  "private": false,
+  "dependencies": {
+    "angular": "1.2.x",
+    "angular-mocks": "~1.2.x",
+    "angular-slider": "*",
+    "bootstrap": "~3.1.1",
+    "requirejs": "2.1.11",
+    "eventemitter2": "*",
+    "d3":"*",
+    "bootstrap":"*",
+    "jquery":"*",
+    "jquery-cookie":"*",
+    "roslibjs": "RobotWebTools/roslibjs#f000b382043047576ebd714492185b3c60d1e14c",
+    "ros2djs": "RobotWebTools/ros2djs#devel",
+    "easeljs": "*"
+  }
+}

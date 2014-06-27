@@ -1,0 +1,139 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Angular-ROS demo</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/bower_components/angular-slider/angular-slider.css">
+
+    <script src="/bower_components/easeljs/lib/easeljs-0.7.1.combined.js"></script>
+    <script src="/bower_components/eventemitter2/lib/eventemitter2.js"></script>
+    <script src="/bower_components/roslibjs/build/roslib.js"></script>
+    <script src="/bower_components/ros2djs/build/ros2d.js"></script>
+
+
+    <script src="/bower_components/angular/angular.js"></script>
+
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/jquery-cookie/jquery.cookie.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/bower_components/d3/d3.js"></script>
+
+
+    <link href="/examples/css/demo.css" rel="stylesheet">
+
+    <script src="/examples/js/demo.js"></script>
+    <script src="/angular_ros.js"></script>
+  </head>
+
+  <body>
+
+    <div class="container-fluid">
+
+
+      <div ng-app="demoApp">
+
+        <h1 class="page-header">Angular-ROS example</h1>
+
+        <!-- ros-ws="ws://localhost:9090" is optional. localhost:9090 is the default -->
+        <!-- ros-namespace="/not-implemented-yet" isn't implemented yet-->
+        <div ros-ws="ws://localhost:9090" ros-namespace="/not-implemented-yet">
+
+          <div ng-controller="ActionCtl">
+            <h3>Fibbonacci action client example</h3>
+
+            <div>
+              <label>Fibbonacci order</label>
+              <input type="number" ng-model="newGoal.order" name="order" min="0" max="255" />
+            </div>
+            <div>
+              <button class="btn btn-small btn-primary" ng-click="sendGoal()">SEND GOAL</button>
+            </div>
+
+            <div class="action-status-container">
+              <div class="row">
+                <span ng-repeat="goal in goals">
+                  <span class="{{goal.statusName().toLowerCase()}}">
+                    {{goal.statusName().substr(0,2)}}
+                  </span>
+                </span>
+              </div>
+
+              <h4>
+                <div class="row">
+                  <div class="col-md-1">
+                    Stamp
+                  </div>
+                  <div class="col-md-1">
+                    Status
+                  </div>
+                  <div class="col-md-3">
+                    Feedback
+                  </div>
+                  <div class="col-md-3">
+                    Result
+                  </div>
+                  <div class="col-md-4">
+                    Status details
+                  </div>
+                </div>
+              </h4>
+              <div ng-repeat="goal in goals">
+                <div class="row">
+                  <div class="col-md-1">
+                    {{goal.status.goal_id.stamp.secs}}
+                  </div>
+                  <div class="col-md-1">
+                    {{goal.statusName()}}
+                  </div>
+                  <div class="col-md-3">
+                    {{goal.lastFeedback.sequence}}
+                  </div>
+                  <div class="col-md-3">
+                    {{goal.result.sequence}}
+                  </div>
+                  <div class="col-md-4">
+                    {{goal.status}}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <hr/>
+
+            <div ros-topic="/chatter" ros-message-type="std_msgs/String">
+              <div ng-controller="TopicPublisherCtl" >
+                <h3>Publishing message type {{rosMessageType}} to {{rosTopic}}</h3>
+                Our ROS connection is ready? {{ros.connected}}<br/>
+
+                <input ng-model="message.data">
+                <button class="btn btn-small btn-primary" ng-click="sendMessage()">SEND MESSAGE</button>
+              </div>
+            </div>
+
+            <hr/>
+
+            <div ros-topic="/chatter" ros-message-type="std_msgs/String">
+              <div ng-controller="TopicListnerCtl" >
+                <h3>Connecting to: {{rosTopic}}</h3>
+                <div ng-repeat="message in messages">
+                  {{message.data}}<br/>
+                </div>
+              </div>
+            </div>
+
+            <hr/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

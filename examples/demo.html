@@ -30,8 +30,23 @@
 
     <link href="/examples/css/demo.css" rel="stylesheet">
 
+
+
+    <script src="/src/actionlib_patch.js"></script>
+
+    <script src="/src/module.js"></script>
+
+    <script src="/src/factories/ros.js"></script>
+
+    <script src="/src/directives/actionlib.js"></script>
+    <script src="/src/directives/config.js"></script>
+    <script src="/src/directives/messages.js"></script>
+
+    <script src="/src/directives/controllers/actionlib.js"></script>
+    <script src="/src/directives/controllers/topics.js"></script>
+
     <script src="/examples/js/demo.js"></script>
-    <script src="/angular_ros.js"></script>
+
   </head>
 
   <body>
@@ -39,7 +54,7 @@
     <div class="container-fluid">
 
 
-      <div ng-app="demoApp">
+      <div ng-app="ros">
 
         <h1 class="page-header">Angular-ROS example</h1>
 
@@ -47,61 +62,64 @@
         <!-- ros-namespace="/not-implemented-yet" isn't implemented yet-->
         <div ros-ws="ws://localhost:9090" ros-namespace="/not-implemented-yet">
 
-          <div ng-controller="ActionCtl">
-            <h3>Fibbonacci action client example</h3>
+          <div server-name="/fibonacci" action-name="actionlib_tutorials/FibonacciAction">
+            <div ng-controller="ActionClient">
+              <!--<ng-eval {'order': 5};> -->
+              <h3>Fibbonacci action client example</h3>
 
-            <div>
-              <label>Fibbonacci order</label>
-              <input type="number" ng-model="newGoal.order" name="order" min="0" max="255" />
-            </div>
-            <div>
-              <button class="btn btn-small btn-primary" ng-click="sendGoal()">SEND GOAL</button>
-            </div>
-
-            <div class="action-status-container">
-              <div class="row">
-                <span ng-repeat="goal in goals">
-                  <span class="{{goal.statusName().toLowerCase()}}">
-                    {{goal.statusName().substr(0,2)}}
-                  </span>
-                </span>
+              <div>
+                <label>Fibbonacci order</label>
+                <input type="number" ng-model="newGoal.order" name="order" min="0" max="255" />
+              </div>
+              <div>
+                <button class="btn btn-small btn-primary" ng-click="sendGoal()">SEND GOAL</button>
               </div>
 
-              <h4>
+              <div class="action-status-container">
                 <div class="row">
-                  <div class="col-md-1">
-                    Stamp
-                  </div>
-                  <div class="col-md-1">
-                    Status
-                  </div>
-                  <div class="col-md-3">
-                    Feedback
-                  </div>
-                  <div class="col-md-3">
-                    Result
-                  </div>
-                  <div class="col-md-4">
-                    Status details
-                  </div>
+                  <span ng-repeat="goal in goals">
+                    <span class="{{goal.statusName().toLowerCase()}}">
+                      {{goal.statusName().substr(0,2)}}
+                    </span>
+                  </span>
                 </div>
-              </h4>
-              <div ng-repeat="goal in goals">
-                <div class="row">
-                  <div class="col-md-1">
-                    {{goal.status.goal_id.stamp.secs}}
+
+                <h4>
+                  <div class="row">
+                    <div class="col-md-1">
+                      Stamp
+                    </div>
+                    <div class="col-md-1">
+                      Status
+                    </div>
+                    <div class="col-md-3">
+                      Feedback
+                    </div>
+                    <div class="col-md-3">
+                      Result
+                    </div>
+                    <div class="col-md-4">
+                      Status details
+                    </div>
                   </div>
-                  <div class="col-md-1">
-                    {{goal.statusName()}}
-                  </div>
-                  <div class="col-md-3">
-                    {{goal.lastFeedback.sequence}}
-                  </div>
-                  <div class="col-md-3">
-                    {{goal.result.sequence}}
-                  </div>
-                  <div class="col-md-4">
-                    {{goal.status}}
+                </h4>
+                <div ng-repeat="goal in goals">
+                  <div class="row">
+                    <div class="col-md-1">
+                      {{goal.status.goal_id.stamp.secs}}
+                    </div>
+                    <div class="col-md-1">
+                      {{goal.statusName()}}
+                    </div>
+                    <div class="col-md-3">
+                      {{goal.lastFeedback.sequence}}
+                    </div>
+                    <div class="col-md-3">
+                      {{goal.result.sequence}}
+                    </div>
+                    <div class="col-md-4">
+                      {{goal.status}}
+                    </div>
                   </div>
                 </div>
               </div>

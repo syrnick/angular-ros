@@ -17,6 +17,8 @@ client. To run the example:
 # Ideas:
 
 * Tests!
+* Proper bower packaging, minification, etc
+* Configure default goal value (at least have a simple example)
 * Dynamic response to attributes, so that you can change topics on the fly.
 * Proper support for namespaces, so that it pick up the namespace from
   parent tags. This should display messages from topic /another/example/chatter

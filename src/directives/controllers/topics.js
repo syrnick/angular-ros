@@ -29,8 +29,11 @@ ngRos.controller('TopicPublisherCtl', ['$scope', 'rosConnection', function($scop
 
   $scope.message = {};
 
-  $scope.sendMessage = function(){
-    var msg = new ROSLIB.Message($scope.message);
+  $scope.sendMessage = function(extraMsg){
+    if(typeof(extraMsg)=="undefined"){
+      extraMsg={};
+    }
+    var msg = new ROSLIB.Message(jQuery.extend(extraMsg,$scope.message));
     $scope.publisher.publish(msg);
   };
 }]);

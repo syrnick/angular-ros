@@ -5,19 +5,29 @@
   "homepage": "https://github.com/syrnick/angular-ros",
   "license": "BSD",
   "private": false,
+
+  "main": "build/{angular-ros.js",
+
+  "ignore": {
+    "node_modules",
+    "bower_components",
+  },
+
   "dependencies": {
+    "jquery":"*",
+
     "angular": "1.2.x",
+
+    "roslibjs": "RobotWebTools/roslibjs#f000b382043047576ebd714492185b3c60d1e14c",
+    "ros2djs": "RobotWebTools/ros2djs#devel"
+  },
+
+  "devDependencies": {
     "angular-mocks": "~1.2.x",
     "angular-slider": "*",
     "bootstrap": "~3.1.1",
-    "requirejs": "2.1.11",
-    "eventemitter2": "*",
     "d3":"*",
     "bootstrap":"*",
-    "jquery":"*",
-    "jquery-cookie":"*",
-    "roslibjs": "RobotWebTools/roslibjs#f000b382043047576ebd714492185b3c60d1e14c",
-    "ros2djs": "RobotWebTools/ros2djs#devel",
-    "easeljs": "*"
+    "jquery-cookie":"*"
   }
 }

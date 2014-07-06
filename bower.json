@@ -6,12 +6,12 @@
   "license": "BSD",
   "private": false,
 
-  "main": "build/{angular-ros.js",
+  "main": "build/angular-ros.js",
 
-  "ignore": {
+  "ignore": [
     "node_modules",
     "bower_components"
-  },
+  ],
 
   "dependencies": {
     "jquery":"*",

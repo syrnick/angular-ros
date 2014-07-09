@@ -18,16 +18,12 @@
 
     "angular": "1.2.x",
 
-    "roslibjs": "RobotWebTools/roslibjs#f000b382043047576ebd714492185b3c60d1e14c",
-    "ros2djs": "RobotWebTools/ros2djs#devel"
+    "roslibjs": "RobotWebTools/roslibjs",
+    "ros2djs": "RobotWebTools/ros2djs"
   },
 
   "devDependencies": {
     "angular-mocks": "~1.2.x",
-    "angular-slider": "*",
-    "bootstrap": "~3.1.1",
-    "d3":"*",
-    "bootstrap":"*",
-    "jquery-cookie":"*"
+    "bootstrap":"*"
   }
 }
